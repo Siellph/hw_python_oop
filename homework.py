@@ -140,11 +140,10 @@ def read_package(workout_type: str, data: list) -> Training:
         'RUN': Running,
         'WLK': SportsWalking
     }
-    if workout_type in training_dictionary:
-        training: Training = training_dictionary[workout_type](*data)
-        return training
-    else:
-        return print('Я не знаю чем вы занимались.')
+    if workout_type not in training_dictionary:
+        return print('Вы точно занимались спортом?')
+    training: Training = training_dictionary[workout_type](*data)
+    return training
 
 
 def main(training: Training) -> None:
